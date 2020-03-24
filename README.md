@@ -21,6 +21,7 @@
 - /portal page which requires the creator code/password in order to enter videos or stream
 - Each user has a /stats page where they can see how much money they've earned through time and through tips
 - Each /stream page has a chat room
+- Do we want each video to have its own password? Or should uploaded videos be passworded at all?
 
 ## TODO: Backlog
 
@@ -48,6 +49,29 @@
 - Video Functions for user /videos Pages
 - Streaming Functions for user /stream Pages
 - /create page where User puts their video, title, description, keycode, etc..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
