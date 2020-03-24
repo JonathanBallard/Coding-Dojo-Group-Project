@@ -32,25 +32,33 @@
 ## Proposed Features & Assignment: MVP
 
 - Feature (estimated length of time to complete) __Assigned Person__
+
+#### Primary Functionality (AKA First Priority)
+
 - Database (Med/Long) __Jonathan__
-- Wireframe the Pages (login/registration, portal, videos, stream, stats) (Med/Short) __Tanner__
+- Chat Function for user /stream Pages (Long) __Sol__
 - Login/Registration Page including OAuth (Med) __Tanner__
+
+#### Remaining Requirements for MVP
+
+- Wireframe the Pages (login/registration, portal, videos, stream, stats) (Med/Short) __Tanner__
 - User Page & Route (/user page) (Short) where users can put a description of themselves and a picture __Sol__
 - User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__
 - User Page & Route (/stream page) (Short) show current viewer number, with a static video for the moment __Sol__
 - User Page & Route (/stats page) (Med/Short) list of all user's videos where user can view their earnings per video __Jonathan__
-- Chat Function for user /stream Pages (Long) __Sol__
-- Page Design/Colors/Beautify (Med) __Jonathan__
-- Video Functions for user /videos Pages, should just be embedding (Short) __Tanner__
+- Account Administration, CRUD to edit User Accounts (Med/Short) __Jonathan__
 
 #### These Features Only Added After Everything Else Done
 
+- Video Functions for user /videos Pages, should just be embedding (Short) __Tanner__
 - /create page where User puts their video, title, description, etc.. (Med) __Jonathan__
+- Page Design/Colors/Beautify (Med) __Jonathan__
 
 ## Features: Backlog
 
 - /display page (off of home page, displays all currently active creator pages for people to scroll through with most active at top)
 - Streaming Functions for user /stream Pages
+- Mobile Friendly
 
 
 
