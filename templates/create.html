@@ -18,10 +18,43 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script defer type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- for testing purposes while I dont have server running -->
+
+    <title>Create</title>
 </head>
 <body>
+    <div class="wrapper">
 
+        <!-- Logo, Welcome Username, Logout -->
+        <div class="topbar d-flex flex-lg-row">
+
+            <!-- Logo -->
+            <div class="logobox col-md-3 d-inline-flex align-items-stretch">
+                <h1 class="display-1">Speakeasy</h1>
+            </div>
+
+            <!-- Welcome User Bar -->
+            <div class="welcomebox col-md-7 d-inline-flex align-items-stretch">
+                <h2 class="display-4">Welcome {{ thisUser.first_name + ' ' + thisUser.last_name }}</h2>
+            </div>
+
+            <!-- Logout Link -->
+            <div class="logoutbox col-md-1 d-inline-flex align-items-stretch">
+                <h4 class="display-5 logoutLink"><a href="/destroy">Logout</a></h4>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
 
 
 </body>

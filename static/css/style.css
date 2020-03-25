@@ -1,0 +1,35 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.wrapper {
+    background-color: #470642;
+}
+
+.topbar {
+    background-color: gold;
+    color: black;
+}
+
+.logobox {
+    background-color: purple;
+    vertical-align: top;
+    color: white;
+}
+
+.welcomebox {
+    color: black;
+    vertical-align: top;
+}
+
+
+
+
+
