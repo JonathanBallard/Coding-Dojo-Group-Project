@@ -47,6 +47,114 @@
 
 
 
+        <!-- Stats, table of videos and stream with earnings for each, and need total earnings -->
+
+        <!-- Total Earnings -->
+        <div class="totalEarnings container bg-light text-success">
+            <h3 class="display-2">Total Earnings</h3>
+
+            <table class="table table-striped table-light table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Total Tips</th>
+                        <th scope="col">Total Donations</th>
+                        <th scope="col">Total Time Income</th>
+                        <th scope="col">Grand Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${{ thisUser.earnings_tips }}</td>
+                        <td>${{ thisUser.earnings_donations }}</td>
+                        <td>${{ thisUser.earnings_watcher_seconds }}</td>
+                        <td>${{ thisUser.earnings_tips + thisUser.earnings_donations + thisUser.earnings_watcher_seconds }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <!-- Stream Earnings -->
+        <div class="streamEarnings container bg-light text-success">
+            <h3 class="display-2">Stream Earnings</h3>
+
+            <table class="table table-dark table-striped table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Stream Title</th>
+                        <th scope="col">Total Times Watched</th>
+                        <th scope="col">Tips</th>
+                        <th scope="col">Donations</th>
+                        <th scope="col">Time Based Income</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- may need to change this to a query from python -->
+                        {% if thisUser.stream %}
+                            <td>{{ thisUser.stream.title }}</td>
+                            <td>{{ thisUser.stream.num_total_watchers }}</td>
+                            <td>${{ thisUser.stream.earnings_tips }}</td>
+                            <td>${{ thisUser.stream.earnings_donations }}</td>
+                            <td>${{ thisUser.stream.earnings_watcher_seconds }}</td>
+                            <td>${{ thisUser.stream.earnings_tips + stream.earnings_donations + stream.earnings_watcher_seconds }}</td>
+                        {% else %}
+                            <td>No Stream Found</td>
+                            <td>0</td>
+                            <td>$0</td>
+                            <td>$0</td>
+                            <td>$0</td>
+                            <td>$0</td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+        <!-- Earnings Per Video -->
+        <div class="videoEarnings container bg-light text-success">
+            <h3 class="display-2">Video Earnings</h3>
+
+            <table class="table table-striped table-light table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Video Title</th>
+                        <th scope="col">Times Watched</th>
+                        <th scope="col">Tips</th>
+                        <th scope="col">Donations</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- may need to change this to a query from python -->
+                    {% if video in thisUser.videos %}
+                        {% for video in thisUser.videos %}
+
+                            <tr>
+                                <td>{{ video.title }}</td>
+                                <td>{{ video.num_times_watched }}</td>
+                                <td>${{ video.earnings_tips }}</td>
+                                <td>${{ video.earnings_donations }}</td>
+                                <td>${{ video.earnings_tips + video.earnings_donations }}</td>
+                            </tr>
+
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+
 
 
 
