@@ -7,6 +7,32 @@ from sqlalchemy.sql import func
 
 
 
+#Login/Reg
+
+
+
+
+#Videos Page
+
+
+
+
+#Stream Page
+
+
+
+
+#User Profile Page
+
+
+
+
+#Stats Page
+
+
+
+
+#Create Page
 
 
 
@@ -43,4 +69,6 @@ from sqlalchemy.sql import func
 
 
 
+if __name__ == "__main__":
+    app.run(debug=True)
 

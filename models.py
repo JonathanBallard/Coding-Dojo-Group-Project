@@ -24,11 +24,24 @@ class Users(db.Model):
     user_image = db.Column(db.String(255))  #retrieve from OAuth Facebook Picture, default will be path to default avatar
     stream = db.relationship("Streams", uselist = False, backref = "creator")
     videos = db.relationship("Videos", backref = "creator")
+    fb_user_id = db.relationship("FBUsers", uselist = False, backref = "user")
     created_at = db.Column(db.DateTime)
     updated_at = db.Column(db.DateTime)
 
     def __repr__(self):
         return "UserID: " + self.id + " Name: " + self.first_name + " " + self.last_name
+
+
+class FBUsers(db.Model):
+    __tablename__ = "FBUsers"
+    id = db.Column(db.Integer, primary_key=True)
+    oauth_user_id = db.Column(db.Integer) #this will be populated by Oauth userID
+    first_name = db.Column(db.String(255))
+    last_name = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, db.ForeignKey("Users", ondelete="cascade"))
+
+
 
 class Videos(db.Model):
     __tablename__ = "Videos"
