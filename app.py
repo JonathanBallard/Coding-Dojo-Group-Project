@@ -4,12 +4,15 @@ from config import app, bcrypt, db
 from flask import Flask, flash, redirect, render_template, request, session, jsonify
 from models import Users, FBUsers, Videos, Streams
 from sqlalchemy.sql import func
-
+from flask_bcrypt import Bcrypt
 
 
 #Login/Reg
-
-
+@app.route("/register", methods=["POST"])
+def registration():
+    new_user = Users.add_new_user(request.form)
+    print(new_user)
+    return redirect("/index")
 
 
 #Videos Page
@@ -47,11 +50,6 @@ def adminPage():
     thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
     allUsers = Users.query.all()
     return render_template("admin.html")
-
-#Registration
-@app.route("/login_reg", methods=["POST"])
-def registration():
-    
 
 
 #Edit User Page
