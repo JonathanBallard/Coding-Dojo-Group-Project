@@ -48,6 +48,11 @@ def adminPage():
     allUsers = Users.query.all()
     return render_template("admin.html")
 
+#Registration
+@app.route("/login_reg", methods=["POST"])
+def registration():
+    
+
 
 #Edit User Page
 @app.route("/editUser/<userID>")
