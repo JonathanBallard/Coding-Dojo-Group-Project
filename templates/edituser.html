@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- for testing purposes while I dont have server running -->
+
+    <title>Edit User</title>
+</head>
+<body>
+    <div class="wrapper">
+
+        <!-- Logo, Welcome Username, Logout -->
+        <div class="topbar d-flex flex-lg-row">
+
+            <!-- Logo -->
+            <div class="logobox col-md-3 d-inline-flex align-items-stretch">
+                <h1 class="display-1">Speakeasy</h1>
+            </div>
+
+            <!-- Welcome User Bar -->
+            <div class="welcomebox col-md-7 d-inline-flex align-items-stretch">
+                <h2 class="display-4">Welcome {{ thisUser.first_name + ' ' + thisUser.last_name }}</h2>
+            </div>
+
+            <!-- Logout Link -->
+            <div class="logoutbox col-md-1 d-inline-flex align-items-stretch">
+                <h4 class="display-5 logoutLink"><a href="/destroy">Logout</a></h4>
+            </div>
+        </div>
+
+
+        <!-- Form to Update User -->
+
+        <form action="/updateUser/{{ editingUser }}" method="POST">
+            <div class="form-group">
+                <label for="admin">Admin - USE WITH CARE</label>
+                <input type="text" name="admin" value="{{ editingUser.admin }}">
+            </div>
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" value="{{ editingUser.first_name }}">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last_name" value="{{ editingUser.last_name }}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" value="{{ editingUser.email }}">
+            </div>
+            <div class="form-group">
+                <label for="creator_name">Creator Name</label>
+                <input type="text" name="creator_name" value="{{ editingUser.creator_name }}">
+            </div>
+            <div class="form-group">
+                <label for="earnings_tips">Earnings Tips</label>
+                <input type="number" name="earnings_tips" value="{{ editingUser.earnings_tips }}">
+            </div>
+            <div class="form-group">
+                <label for="earnings_donations">Earnings Donations</label>
+                <input type="number" name="earnings_donations" value="{{ editingUser.earnings_donations }}">
+            </div>
+            <div class="form-group">
+                <label for="earnings_watcher_seconds">Earnings Time Based</label>
+                <input type="number" name="earnings_watcher_seconds" value="{{ editingUser.earnings_watcher_seconds }}">
+            </div>
+            <div class="form-group">
+                <label for="fb_user_id">Facebook User ID</label>
+                <input type="number" name="fb_user_id" value="{{ editingUser.fb_user_id }}">
+            </div>
+
+        
+        </form>
+
+
+
+
+
+        <!-- Delete User -->
+        <div class="container">
+            <a href="/deleteUser/{{ editingUser }}" class="btn btn-danger d-block">Delete Me FOREVER</a>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+</body>
+</html>

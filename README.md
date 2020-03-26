@@ -45,8 +45,9 @@
 - User Page & Route (/user page) (Short) where users can put a description of themselves and a picture __Sol__
 - User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__
 - User Page & Route (/stream page) (Short) show current viewer number, with a static video for the moment __Sol__
-- User Page & Route (/stats page) (Med/Short) list of all user's videos where user can view their earnings per video __Jonathan__
-- Account Administration, CRUD to edit User Accounts (Med/Short) __Jonathan__
+- User Page & Route (/stats page) (Med/Short) list of all user's videos where user can view their earnings per video, total earnings, earnings from stream __Jonathan__
+- Account Administration, list of user accounts /admin page (Med/Short) __Jonathan__
+- Account Administration, CRUD to edit User Accounts /editUser page (Med/Short) __Jonathan__
 
 #### These Features Only Added After Everything Else Done
 

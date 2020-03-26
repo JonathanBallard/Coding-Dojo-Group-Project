@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous"/>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <title>Admin</title>
+</head>
+<body>
+    <div class="wrapper">
+
+        <!-- Logo, Welcome Username, Logout -->
+        <div class="topbar d-flex flex-lg-row">
+
+            <!-- Logo -->
+            <div class="logobox col-md-3 d-inline-flex align-items-stretch">
+                <h1 class="display-1">Speakeasy</h1>
+            </div>
+
+            <!-- Welcome User Bar -->
+            <div class="welcomebox col-md-7 d-inline-flex align-items-stretch">
+                <h2 class="display-4">Welcome {{ thisUser.first_name + ' ' + thisUser.last_name }}</h2>
+            </div>
+
+            <!-- Logout Link -->
+            <div class="logoutbox col-md-1 d-inline-flex align-items-stretch">
+                <h4 class="display-5 logoutLink"><a href="/destroy">Logout</a></h4>
+            </div>
+        </div>
+
+        <!-- List of all Users with Update and Delete Functions -->
+
+        <table class="table table-striped table-light table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Admin Power</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Creator Name</th>
+                    <th scope="col">Earnings Tips</th>
+                    <th scope="col">Earnings Donations</th>
+                    <th scope="col">Earnings Time Based</th>
+                    <th scope="col">FB User ID</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Updated At</th>
+                    <th class="text-danger" scope="col">Edit User</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for user in allUsers %}
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.admin }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.creator_name }}</td>
+                    <td>{{ user.earnings_tips }}</td>
+                    <td>{{ user.earnings_donations }}</td>
+                    <td>{{ user.earnings_watcher_seconds }}</td>
+                    <td>{{ user.fb_user_id }}</td>
+                    <td>{{ user.created_at }}</td>
+                    <td>{{ user.updated_at }}</td>
+                    <td class="text-danger"><a href="/editUser/{{ user.id }}">Edit Me</a></td>
+                {% endfor %}
+                </tr>
+
+            </tbody>
+
+
+
+
+
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</body>
+</html>
