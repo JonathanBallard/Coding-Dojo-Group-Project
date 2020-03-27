@@ -4,12 +4,15 @@ from config import app, bcrypt, db
 from flask import Flask, flash, redirect, render_template, request, session, jsonify
 from models import Users, FBUsers, Videos, Streams
 from sqlalchemy.sql import func
-
+from flask_bcrypt import Bcrypt
 
 
 #Login/Reg
-
-
+@app.route("/register", methods=["POST"])
+def registration():
+    new_user = Users.add_new_user(request.form)
+    print(new_user)
+    return redirect("/index")
 
 
 #Videos Page

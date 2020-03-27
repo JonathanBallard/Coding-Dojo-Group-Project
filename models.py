@@ -33,6 +33,15 @@ class Users(db.Model):
     def __repr__(self):
         return "UserID: " + self.id + " Name: " + self.first_name + " " + self.last_name
 
+    @classmethod
+    def add_new_user(cls, form_data):
+        hashed_password = bcrypt.generate_password_hash(user_data['password'])
+        new_user = cls(first_name=user_data['first_name'], last_name=user_data['last_name'], email=user_data['email'], password=hashed_password)
+        db.session.add(new_user)
+        print("adding new user...")
+        print(new_user)
+        db.session.commit()
+        return new_user
 
 class FBUsers(db.Model):
     __tablename__ = "FBUsers"
