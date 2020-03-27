@@ -31,7 +31,7 @@ class Users(db.Model):
     updated_at = db.Column(db.DateTime)
 
     def __repr__(self):
-        return "UserID: " + self.id + " Name: " + self.first_name + " " + self.last_name
+        return "UserID: " + str(self.id) + " Name: " + self.first_name + " " + self.last_name
 
 
 class FBUsers(db.Model):
@@ -41,7 +41,7 @@ class FBUsers(db.Model):
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255))
-    user_id = db.Column(db.Integer, db.ForeignKey("Users", ondelete="cascade"))
+    user_id = db.Column(db.Integer, db.ForeignKey("Users.id", ondelete="cascade"))
 
 
 

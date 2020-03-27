@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -46,7 +46,7 @@
 
 
         <!-- Form to Update User -->
-        <form action="/updateUser/{{ userToEdit }}" method="POST">
+        <form action="/updateUser/{{ userToEdit.id }}" method="POST">
             <div class="form-group">
                 <label for="admin">Admin - USE WITH CARE</label>
                 <input type="text" name="admin" value="{{ userToEdit.admin }}">
@@ -83,7 +83,7 @@
                 <label for="fb_user_id">Facebook User ID</label>
                 <input type="number" name="fb_user_id" value="{{ userToEdit.fb_user_id }}">
             </div>
-
+            <input type="submit" value="Submit">
         
         </form>
 
@@ -93,7 +93,7 @@
 
         <!-- Delete User -->
         <div class="container">
-            <a href="/deleteUser/{{ userToEdit }}" class="btn btn-danger d-block">Delete Me FOREVER</a>
+            <a href="/deleteUser/{{ userToEdit.id }}" class="btn btn-danger d-block">Delete Me FOREVER</a>
         </div>
 
 
