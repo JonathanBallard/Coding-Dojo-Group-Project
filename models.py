@@ -36,7 +36,7 @@ class Users(db.Model):
     @classmethod
     def add_new_user(cls, form_data):
         hashed_password = bcrypt.generate_password_hash(user_data['password'])
-        new_user = cls(first_name=user_data['first_name'], last_name=user_data['last_name'], email=user_data['email'], password=hashed_password)
+        new_user = cls(first_name=user_data['first_name'], last_name=user_data['last_name'], email=user_data['email'], passwordHash=hashed_password)
         db.session.add(new_user)
         print("adding new user...")
         print(new_user)
