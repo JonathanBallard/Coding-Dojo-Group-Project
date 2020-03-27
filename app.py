@@ -18,7 +18,7 @@ from sqlalchemy.sql import func
 
 
 #Stream Page
-
+# BLAH
 
 
 
@@ -38,7 +38,7 @@ def statsRoute(userid):
 @app.route("/create")
 def createPage():
     thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
-    return render_template("create.html")
+    return render_template("create.html", thisUser = thisUser)
 
 
 #Admin Page
@@ -46,22 +46,21 @@ def createPage():
 def adminPage():
     thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
     allUsers = Users.query.all()
-    return render_template("admin.html")
+    return render_template("admin.html", thisUser = thisUser)
 
 
 #Edit User Page
 @app.route("/editUser/<userID>")
 def editUserPage(userID):
     thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
-    editingUser = Users.query.get(userID)
-    return render_template("edituser.html", editingUser = editingUser)
+    userToEdit = Users.query.get(userID)
+    return render_template("edituser.html", userToEdit = userToEdit, thisUser = thisUser)
 
 
 #Update User POST Route
 @app.route("/updateUser/<userID>", methods=["POST"])
 def updateUser(userID):
-    thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
-    editingUser = Users.query.get(userID)
+    userToEdit = Users.query.get(userID)
 
     admin = request.form['admin']
     firstName = request.form['first_name']
@@ -73,17 +72,17 @@ def updateUser(userID):
     earningsTimeBased = request.form['earnings_watcher_seconds']
     FBUserID = request.form['fb_user_id']
 
-    editingUser.admin = admin
-    editingUser.first_name = firstName
-    editingUser.last_name = lastName
-    editingUser.email = email
-    editingUser.creator_name = creatorName
-    editingUser.earnings_tips = earningsTips
-    editingUser.earnings_donations = earningsDonations
-    editingUser.earnings_watcher_seconds = earningsTimeBased
-    editingUser.fb_user_id = FBUserID
+    userToEdit.admin = admin
+    userToEdit.first_name = firstName
+    userToEdit.last_name = lastName
+    userToEdit.email = email
+    userToEdit.creator_name = creatorName
+    userToEdit.earnings_tips = earningsTips
+    userToEdit.earnings_donations = earningsDonations
+    userToEdit.earnings_watcher_seconds = earningsTimeBased
+    userToEdit.fb_user_id = FBUserID
 
-    db.session.add(editingUser)
+    db.session.add(userToEdit)
     db.session.commit()
 
 
@@ -94,9 +93,9 @@ def updateUser(userID):
 @app.route("/deleteUser/<userID>")
 def deleteUser(userID):
     thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
-    editingUser = Users.query.get(userID)
-    if thisUser.admin == True:   #make sure person trying to do this is an admin
-        db.session.delete(editingUser)
+    userToEdit = Users.query.get(userID)
+    if thisUser.admin == True:   #make sure person trying to delete this User is an admin
+        db.session.delete(userToEdit)
         db.session.commit()
         return redirect("/admin")
     else:

@@ -132,8 +132,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- may need to change this to a query from python -->
-                    {% if video in thisUser.videos %}
+                    <!-- may need to change this to a query from app.py -->
+                    {% if thisUser.videos|length > 0 %}
                         {% for video in thisUser.videos %}
 
                             <tr>

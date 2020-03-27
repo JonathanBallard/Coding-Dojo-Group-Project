@@ -45,15 +45,29 @@
 - User Page & Route (/user page) (Short) where users can put a description of themselves and a picture __Sol__
 - User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__
 - User Page & Route (/stream page) (Short) show current viewer number, with a static video for the moment __Sol__
-- User Page & Route (/stats page) (Med/Short) list of all user's videos where user can view their earnings per video, total earnings, earnings from stream __Jonathan__
-- Account Administration, list of user accounts /admin page (Med/Short) __Jonathan__
-- Account Administration, CRUD to edit User Accounts /editUser page (Med/Short) __Jonathan__
+- User Page & Route (/stats page) (Med/Short) list of all user's videos where user can view their earnings per video, total earnings, earnings from stream __Jonathan__ **DONE**
+- Account Administration, list of user accounts /admin page (Med/Short) __Jonathan__ **DONE**
+- Account Administration, CRUD to edit User Accounts /editUser page (Med/Short) __Jonathan__ **DONE**
 
 #### These Features Only Added After Everything Else Done
 
 - Video Functions for user /videos Pages, should just be embedding (Short) __Tanner__
 - /create page where User puts their video, title, description, etc.. (Med) __Jonathan__
 - Page Design/Colors/Beautify (Med) __Jonathan__
+
+#### Lastly - Testing
+
+- Test Login/Registration, ensure flask messages popup when login/registration fails
+- Test /user page
+- Test /videos page
+- Test /stream page
+- Test /stats page
+- Test /admin page
+- Test /editUser page
+- Test /create page
+- Test chat functions
+- Test OAuth functions
+- Test Database
 
 ## Features: Backlog
 
