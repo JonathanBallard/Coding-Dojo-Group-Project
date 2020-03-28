@@ -55,7 +55,9 @@
             <div class="d-flex text-center justify-content-center mt-4 mb-5">
               <button type="submit" class="btn btn-dark text-white">Sign Up!</button>
             </div>
-            <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
+            <div class="text-center d-flex justify-content-center">
+              <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
+            </div>
             {% with messages = get_flashed_messages(with_categories=True) %}
                   {% if messages %}
                       {% for message in messages %}
@@ -77,7 +79,7 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '631307220747284',
+      appId      : '881751928913329',
       cookie     : true,
       xfbml      : true,
       version    : 'v6.0'
@@ -102,6 +104,7 @@
    function statusChangeCallback(response) {
     if (response.status === 'connected') {
       console.log("logged in and authenticated");
+      testAPI();
     }
     else {
       console.log("you are not logged in");
@@ -110,6 +113,13 @@
     FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
+  function testAPI() {
+    FB.api('/me?fields=name,email', function(response){
+      if(response && !response.error) {
+        console.log(response)
+      }
+    })
+  }
 }
    }
 </script>
