@@ -6,13 +6,71 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../static/css/style.css">
 <title>Welcome to Speakeasy</title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-sm navbar-light mb-3" id="top-nav">
+    <div class="container">
+      <div class="logo">
+        <a class="navbar-brand" href="#">Speakeasy</a>
+      </div>
+      <form class="form-inline" method="post" action="/login">
+        <label for="Email" class="mr-2">Email: </label>
+        <input class="form-control mr-sm-2" type="input" aria-label="email">
+        <label for="Password" class="mr-2">Password: </label>
+        <input class="form-control mr-sm-2" type="input" aria-label="email">
+        <button class="btn btn-primary my-2 my-sm-0 ml-2" type="submit">Login</button>
+      </form>
+    </div>
+</nav>
   <div class="row">
-    <div class="col"></div>
+    <div class="col">
+      <div class="container w-25">
+        <form action="/register", method="POST" class="justify-content-center" id="regForm">
+          <div class="form-group">
+            <h3 class="text-center mt-2">Registration</h3>
+            <div class="form-group">
+              <label for="firstname">First Name:</label>
+              <input type="text" class="form-control" name="first_name">
+            </div>
+            <div class="form-group">
+              <label for="lastname">Last Name:</label>
+              <input type="text" class="form-control" name="last_name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" name="email" id="email">
+              <div id="usernameMsg" class="mt-2"></div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form-group">
+              <label for="cpassword">Confirm Password:</label>
+              <input type="password" class="form-control" name="cpassword">
+            </div>
+            <div class="d-flex text-center justify-content-center mt-4 mb-5">
+              <button type="submit" class="btn btn-dark text-white">Sign Up!</button>
+            </div>
+            <div class="text-center d-flex justify-content-center">
+              <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                  {% if messages %}
+                      {% for message in messages %}
+                        {% if message[0] == "reg_error" %}
+                      <p>{{message[1]}}</p>
+                        {% endif %}
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
@@ -21,13 +79,17 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '{631307220747284}',
+      appId      : '881751928913329',
       cookie     : true,
       xfbml      : true,
-      version    : '{v6.0}'
+      version    : 'v6.0'
     });
       
     FB.AppEvents.logPageView();   
+    
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
       
   };
 
@@ -38,6 +100,28 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+   function statusChangeCallback(response) {
+    if (response.status === 'connected') {
+      console.log("logged in and authenticated");
+      testAPI();
+    }
+    else {
+      console.log("you are not logged in");
+    }
+    function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+  function testAPI() {
+    FB.api('/me?fields=name,email', function(response){
+      if(response && !response.error) {
+        console.log(response)
+      }
+    })
+  }
+}
+   }
 </script>
 </body>
 </html>
