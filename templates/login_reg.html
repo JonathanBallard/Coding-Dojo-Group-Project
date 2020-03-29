@@ -77,19 +77,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script>
-  window.fbAsyncInit = function() {
+   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '881751928913329',
+      appId      : '631307220747284',
       cookie     : true,
       xfbml      : true,
       version    : 'v6.0'
     });
       
     FB.AppEvents.logPageView();   
-    
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
       
   };
 
@@ -101,27 +97,29 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-   function statusChangeCallback(response) {
-    if (response.status === 'connected') {
-      console.log("logged in and authenticated");
-      testAPI();
+  function statusChangeCallback(response) {
+    if (response.status == "connected") {
+      console.log("you are logged in")
     }
     else {
-      console.log("you are not logged in");
+      console.log("not authenticated")
     }
-    function checkLoginState() {
-    FB.getLoginStatus(function(response) {
+    testAPI();
+  }   
+
+  function checkLoginState() {
+  FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
+}
+
   function testAPI() {
-    FB.api('/me?fields=name,email', function(response){
-      if(response && !response.error) {
+    FB.api("/me?fields=name,email", function(response){
+      if (response && !response.error) {
         console.log(response)
       }
     })
   }
-}
-   }
 </script>
 </body>
 </html>
