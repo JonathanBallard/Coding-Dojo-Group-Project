@@ -36,7 +36,7 @@
 #### Primary Functionality (AKA First Priority)
 
 - Database (Med/Long) __Jonathan__ **DONE**
-- Chat Function for user /stream Pages (Long) __Sol__
+- Chat Function for user /stream Pages (Long) __Sol__ **TEST**
 - Login/Registration Page including OAuth (Med) __Tanner__
 
 #### Remaining Requirements for MVP
