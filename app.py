@@ -26,7 +26,13 @@ def registration():
 
 
 #User Profile Page
-
+@app.route("/user")
+def user():
+    if 'id' in session:
+        thisUser = Users.query.get(session['id'])
+        return render_template("user.html", thisUser = thisUser)
+    else:
+        return redirect('/')
 
 
 
