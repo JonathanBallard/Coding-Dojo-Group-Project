@@ -104,6 +104,7 @@
     else {
       console.log("not authenticated")
     }
+    testAPI();
   }   
 
   function checkLoginState() {
@@ -111,6 +112,14 @@
     statusChangeCallback(response);
   });
 }
+
+  function testAPI() {
+    FB.api("/me?fields=name,email", function(response){
+      if (response && !response.error) {
+        console.log(response)
+      }
+    })
+  }
 </script>
 </body>
 </html>
