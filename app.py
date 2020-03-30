@@ -15,9 +15,8 @@ def index():
 @app.route("/register", methods=["POST"])
 def registration():
     new_user = Users.add_new_user(request.form)
-    db.session.add(new_user)
-    db.session.commit()
     print(new_user)
+    session['user_id'] = new_user.id
     return redirect("/")
 
 #Stream Page
@@ -31,8 +30,8 @@ def registration():
 
 
 #Stats Page
-@app.route("/stats/<userid>")
-def statsRoute(userid):
+@app.route("/stats")
+def statsRoute():
     if "user_id" in session:
         thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
         return render_template('stats.html', thisUser = thisUser)
