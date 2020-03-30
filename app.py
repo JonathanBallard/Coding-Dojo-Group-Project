@@ -20,9 +20,9 @@ def registration():
     return redirect("/")
 
 #User Profile Page
-@app.route("/user")
-def user():
-    if 'id' in session:
+@app.route("/user/<userID>")
+def user(userID):
+    if 'user_id' in session:
         thisUser = Users.query.get(session['user_id']) # just like other - need check on session label
         return render_template("user.html", thisUser = thisUser)
     else:
@@ -63,9 +63,9 @@ def createPage():
 #Admin Page
 @app.route("/admin")
 def adminPage():
-    # testUser = Users(first_name = "NOT", last_name = "A", email = "USER", admin = False, creator_name = "testcase", description = "description")
-    # db.session.add(testUser)
-    # db.session.commit()
+    testUser = Users(first_name = "NOT", last_name = "A", email = "USER", admin = False, creator_name = "testcase", description = "description")
+    db.session.add(testUser)
+    db.session.commit()
     allUsers = Users.query.all()
     if "user_id" in session:
         thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
@@ -153,12 +153,13 @@ def deleteUser(userID):
 
 
 
-
-
-
-
-
-
 if __name__ == "__main__":
-    app.run(debug=True, ssl_context='adhoc')
+    app.run(debug=True)
+
+
+
+
+# if __name__ == "__main__":
+#     app.run(debug=True, ssl_context='adhoc')
+
 
