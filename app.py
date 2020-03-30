@@ -60,6 +60,20 @@ def createPage():
         return render_template('create.html', thisUser = testUser)
 
 
+#Create Video
+@app.route("/createVideo/<userID>", methods=['POST'])
+def createVideo(userID):
+    if "user_id" in session:
+        thisUser = Users.query.get(session['user_id'])
+        newVid = Videos(title = request.form['title'], video_link = request.form['video_link'], description = request.form['description'], video_author_id = session['user_id'])
+        db.session.add(newVid)
+        db.session.commit()
+        return redirect('/create')
+    else:
+        thisUser = Users.query.get(1) #test user id
+        return redirect('/create')
+
+
 #Admin Page
 @app.route("/admin")
 def adminPage():

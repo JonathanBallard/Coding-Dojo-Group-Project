@@ -45,7 +45,26 @@
         </div>
 
 
-
+        <!-- Form to Update User -->
+        <form action="/createVideo/{{ thisUser.id }}" method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title">
+            </div>
+            <div class="form-group">
+                <label for="video_link">Video Link</label>
+                <input type="text" name="video_link">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" name="description" placeholder="description...">
+            </div>
+            <div class="form-group d-none">
+                <label for="video_author_id"></label>
+                <input type="text" name="video_author_id" value="{{ userToEdit.id }}">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
 
 
 
