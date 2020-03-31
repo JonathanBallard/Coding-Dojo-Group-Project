@@ -23,7 +23,7 @@ def registration():
 @app.route("/user/<userID>")
 def user(userID):
     if 'user_id' in session:
-        thisUser = Users.query.get(session['user_id']) # just like other - need check on session label
+        thisUser = Users.query.get(session['user_id']) 
         return render_template("user.html", thisUser = thisUser)
     else:
         return redirect('/')
@@ -155,8 +155,6 @@ def deleteUser(userID):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
 
 
 # if __name__ == "__main__":
