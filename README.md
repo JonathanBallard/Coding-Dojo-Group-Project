@@ -51,9 +51,11 @@
 #### These Features Only Added After Everything Else Done
 
 - Video Functions for user /videos Pages, should just be embedding (Short) __Tanner__
-- /create page where User puts their video, title, description, etc.. (Med) __Jonathan__
+- /create page where User puts their video, title, description, etc.. (Med) __Jonathan__ **DONE**
 - Page Design/Colors/Beautify (Med) __Jonathan__
 - User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__
+- Links connecting the pages where they need to be connected, Login to your own User page, User Page to Stream, to Create, to Stats
+- Make sure only Admin accounts access admin page/edituser page
 
 #### Lastly - Testing
 
