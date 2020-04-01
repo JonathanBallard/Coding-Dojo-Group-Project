@@ -70,7 +70,6 @@ def createVideo(userID):
         db.session.commit()
         return redirect('/create')
     else:
-        thisUser = Users.query.get(1) #test user id
         return redirect('/create')
 
 
@@ -81,9 +80,14 @@ def adminPage():
     db.session.add(testUser)
     db.session.commit()
     allUsers = Users.query.all()
+    
+    # Check if User is Admin, if so allow them access
     if "user_id" in session:
-        thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
-        return render_template('admin.html', thisUser = thisUser, allUsers = allUsers)
+        thisUser = Users.query.get(session['user_id'])
+        if thisUser.admin == True:
+            return render_template('admin.html', thisUser = thisUser, allUsers = allUsers)
+        else:
+            return redirect('/')
     else:
         testUser = Users.query.get(1) #TEST USER ID
         return render_template('admin.html', thisUser = testUser, allUsers = allUsers)
@@ -93,9 +97,13 @@ def adminPage():
 @app.route("/editUser/<userID>")
 def editUserPage(userID):
     userToEdit = Users.query.get(userID)
+    # Check if User is Admin, if so allow them access
     if "user_id" in session:
-        thisUser = Users.query.get(session['user_id'])    #will need to check what it's actually called in session
-        return render_template('edituser.html', thisUser = thisUser, userToEdit = userToEdit)
+        thisUser = Users.query.get(session['user_id'])
+        if thisUser.admin == True:
+            return render_template('edituser.html', thisUser = thisUser, userToEdit = userToEdit)
+        else:
+            return redirect('/')
     else:
         testUser = Users.query.get(1) #TEST USER ID
         return render_template('edituser.html', thisUser = testUser, userToEdit = userToEdit)
@@ -114,7 +122,7 @@ def updateUser(userID):
     earnings_tips = request.form['earnings_tips']
     earnings_donations = request.form['earnings_donations']
     earnings_watcher_seconds = request.form['earnings_watcher_seconds']
-    fb_user_id = request.form['fb_user_id'] # currently not working
+    fb_user_id = request.form['fb_user_id'] # currently not working, do not use
 
     userToEdit.admin = admin == "True"
     userToEdit.first_name = firstName
