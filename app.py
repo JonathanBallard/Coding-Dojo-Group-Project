@@ -17,8 +17,9 @@ def registration():
     new_user = Users.add_new_user(request.form)
     db.session.add(new_user)
     db.session.commit()
+    ## JSON stuff here
     print(new_user)
-    return redirect("/")
+    return redirect("/stats")
 
 #Stream Page
 
@@ -26,6 +27,8 @@ def registration():
 
 
 #User Profile Page
+# @app.route("/profile/<userID>")
+# def profile():
 
 
 
