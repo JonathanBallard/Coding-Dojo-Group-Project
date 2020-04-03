@@ -20,6 +20,8 @@
     <script defer type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
     <link rel="stylesheet" href="../static/css/style.css"> <!-- for testing purposes while I dont have server running -->
 
+    <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script> <!--Scaledrone chatroom -->
+
     <title>Stream</title>
 </head>
 <body>
@@ -44,8 +46,16 @@
             </div>
         </div>
 
-
-
+        <!-- Chatroom html: we'll need to address as we style this page - SK -->
+        <div class="members-count">-</div>
+        <div class="members-list">-</div>
+        <div class="messages"></div>
+        <form class="message-form" onsubmit="return false;">
+          <input class="message-form__input" placeholder="Type a message.." type="text"/>
+          <input class="message-form__button" value="Send" type="submit"/>
+        </form>
+        <script src="./script.js"></script>
+        <!--end chatroom specific html-->
 
 
 
