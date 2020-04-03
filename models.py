@@ -3,11 +3,25 @@ from sqlalchemy.sql import func
 from config import db
 from sqlalchemy import text
 from flask_migrate import Migrate
+import datetime
 
 
 
 # - Users Table:
 #     - OAuth UserID
+class FbUser(db.Model):
+    __tablename__ = 'FbUsers'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    user_id = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, server_default=func.now())
+    updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
+
+    # @classmethod
+    # def add_new_fb(cls, data):
+    #     new_fb_user = cls(name=data.name)
+
 
 class Users(db.Model):
     __tablename__ = 'Users'

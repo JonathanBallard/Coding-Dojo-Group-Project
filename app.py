@@ -12,8 +12,11 @@ def index():
     return render_template("login_reg.html")
     
 #Login/Reg
-@app.route("/register", methods=["POST"])
+@app.route("/register", methods=["POST", "GET"])
 def registration():
+    if request.method == 'POST':
+        print(request.get_json())
+        fbData = request.get_json()
     new_user = Users.add_new_user(request.form)
     db.session.add(new_user)
     db.session.commit()
