@@ -41,12 +41,14 @@
 
 #### Remaining Requirements for MVP
 
-- Wireframe the Pages (login/registration, portal, videos, stream, stats) (Med/Short) __Tanner__
+- Connect OAuth to Database __Tanner__
+- Wireframe the Pages (login/registration, portal, videos, stream, stats) (Med/Short) __Tanner__ **DONE**
 - User Page & Route (/user page) (Short) where users can put a description of themselves and a picture __Sol__
 - User Page & Route (/stream page) (Short) show current viewer number, with a static video for the moment __Sol__
 - User Page & Route (/stats page) (Med/Short) list of all user's videos where user can view their earnings per video, total earnings, earnings from stream __Jonathan__ **DONE**
 - Account Administration, list of user accounts /admin page (Med/Short) __Jonathan__ **DONE**
 - Account Administration, CRUD to edit User Accounts /editUser page (Med/Short) __Jonathan__ **DONE**
+- Links connecting the pages where they need to be connected, User Page to Stream, to Create, to Stats __Tanner__
 
 #### These Features Only Added After Everything Else Done
 
@@ -54,9 +56,8 @@
 - /create page where User puts their video, title, description, etc.. (Med) __Jonathan__ **DONE**
 - Page Design/Colors/Beautify (Med) __Jonathan__
 - User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__
-- Login/Register takes you to your own User page
-- Links connecting the pages where they need to be connected, User Page to Stream, to Create, to Stats
-- Make sure only Admin accounts access admin page/edituser page __Jonathan__
+- Login/Register takes you to your own User page __Sol__
+- Make sure only Admin accounts access admin page/edituser page __Jonathan__ **DONE**
 
 #### Lastly - Testing
 
@@ -77,53 +78,5 @@
 - /display page (off of home page, displays all currently active creator pages for people to scroll through with most active at top)
 - Streaming Functions for user /stream Pages
 - Mobile Friendly
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
