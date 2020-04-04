@@ -104,7 +104,7 @@
     else {
       console.log("not authenticated")
     }
-    testAPI();
+    getAPIData();
   }   
 
   function checkLoginState() {
@@ -113,10 +113,13 @@
   });
 }
 
-  function testAPI() {
+var profData = false
+
+  function getAPIData() {
     FB.api("/me?fields=name,email", function(response){
       if (response && !response.error) {
         console.log(response)
+        profData = true; 
       }
     })
   }
