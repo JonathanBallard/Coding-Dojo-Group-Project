@@ -4,8 +4,9 @@ from config import db, bcrypt
 from sqlalchemy import text
 from flask_migrate import Migrate
 import datetime
+import re
 
-
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 # - Users Table:
 #     - OAuth UserID
@@ -43,6 +44,26 @@ class Users(db.Model):
         print(new_user)
         db.session.commit()
         return new_user
+    
+    @classmethod
+    def validate_user(cls, user_data):
+        is_valid = True
+        if len(user_data["first_name"]) < 1:
+            is_valid = False
+            flash("Please provide a first name", "reg_error")
+        if len(user_data["last_name"]) < 1:
+            is_valid = False
+            flash("Please provide a last name", "reg_error")
+        if not EMAIL_REGEX.match(user_data["email"]):
+            is_valid = False
+            flash("Please provide a valid email", "reg_error" )
+        if len(user_data["password"]) < 8:
+            is_valid = False
+            flash("Password should be at least 8 characters", "reg_error")
+        if user_data["password"] != user_data["cpassword"]:
+            is_valid = False
+            flash("Passwords do not match", "reg_error")
+        return is_valid
 
 class FBUsers(db.Model):
     __tablename__ = "FBUsers"

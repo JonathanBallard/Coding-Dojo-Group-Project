@@ -16,13 +16,22 @@
       <div class="logo">
         <a class="navbar-brand" href="#">Speakeasy</a>
       </div>
-      <form class="form-inline" method="post" action="/login">
+      <form class="form-inline" method="post" action="/login/{{User}}">
         <label for="Email" class="mr-2">Email: </label>
-        <input class="form-control mr-sm-2" type="input" aria-label="email">
+        <input class="form-control mr-sm-2" type="input" aria-label="email" name="lemail">
         <label for="Password" class="mr-2">Password: </label>
-        <input class="form-control mr-sm-2" type="input" aria-label="email">
+        <input class="form-control mr-sm-2" type="password" aria-label="password" name="lpassword">
         <button class="btn btn-primary my-2 my-sm-0 ml-2" type="submit">Login</button>
       </form>
+      {% with messages = get_flashed_messages(with_categories=True) %}
+                  {% if messages %}
+                      {% for message in messages %}
+                        {% if message[0] == "log_error" %}
+                      <p>{{message[1]}}</p>
+                        {% endif %}
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
     </div>
 </nav>
   <div class="row">

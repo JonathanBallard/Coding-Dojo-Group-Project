@@ -1,28 +1,32 @@
 import re
 import json
 from config import app, bcrypt, db
-from flask import Flask, flash, redirect, render_template, request, session, jsonify
+from flask import Flask, flash, redirect, render_template, request, session, jsonify, url_for
 from models import Users, FBUsers, Videos, Streams
 from sqlalchemy.sql import func
 from flask_bcrypt import Bcrypt
 
-#Registration
+
+#Index
 @app.route("/")
 def index():
     return render_template("login_reg.html")
     
-#Login/Reg
+#Registration
 @app.route("/register", methods=["POST", "GET"])
 def registration():
     # if request.method == 'POST':
     #     print(request.get_json())
     #     fbData = request.get_json()
+    validation_check = Users.validate_user(request.form)
+    if not validation_check:
+        print("something went wrong")
+        return redirect('/')
     new_user = Users.add_new_user(request.form)
-    db.session.add(new_user)
-    db.session.commit()
     print(new_user)
+    session['logged_in'] = True
     session['user_id'] = new_user.id
-    return redirect("/user")
+    return redirect(f"/user/{new_user.id}")
 
 # @app.route("/handle_json", methods=["POST"])
 # def handler():
@@ -30,6 +34,16 @@ def registration():
 #     print(data)
 #     return redirect('/user')
 
+#Login 
+@app.route("/login", methods=["POST"])
+def login(userID):
+    user = User.query.filter_by(email=request.form['lemail']).all()
+    is_valid = True if len(user) == 1 and bcrypt.check_password_hash(user[0].password, request.form['lpassword']) else False
+    if is_valid:
+        session["logged_in"] = True
+        session["user_id"] = user[0].id
+        return redirect ('/stream')
+        
 #User Profile Page
 @app.route("/user/<userID>")
 def user(userID):
@@ -43,11 +57,6 @@ def user(userID):
 # BLAH
 
 
-
-
-
-
-
 #Stats Page
 @app.route("/stats")
 def statsRoute():
@@ -57,7 +66,6 @@ def statsRoute():
     else:
         testUser = Users.query.get(1) #TEST USER ID
         return render_template('stats.html', thisUser = testUser)
-    
 
 
 #Create Page
@@ -69,7 +77,6 @@ def createPage():
     else:
         testUser = Users.query.get(1) #TEST USER ID
         return render_template('create.html', thisUser = testUser)
-
 
 #Create Video
 @app.route("/createVideo/<userID>", methods=['POST'])
