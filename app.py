@@ -14,21 +14,21 @@ def index():
 #Login/Reg
 @app.route("/register", methods=["POST", "GET"])
 def registration():
-    if request.method == 'POST':
-        print(request.get_json())
-        fbData = request.get_json()
+    # if request.method == 'POST':
+    #     print(request.get_json())
+    #     fbData = request.get_json()
     new_user = Users.add_new_user(request.form)
     db.session.add(new_user)
     db.session.commit()
     print(new_user)
     session['user_id'] = new_user.id
-    return redirect("/")
+    return redirect("/user")
 
-@app.route("/handle_json", methods=["POST"])
-def handler():
-    data = request.get_json()
-    print(data)
-    return redirect('/user')
+# @app.route("/handle_json", methods=["POST"])
+# def handler():
+#     data = request.get_json()
+#     print(data)
+#     return redirect('/user')
 
 #User Profile Page
 @app.route("/user/<userID>")
