@@ -113,17 +113,13 @@
   });
 }
 
+var profData = false
+
   function getAPIData() {
     FB.api("/me?fields=name,email", function(response){
       if (response && !response.error) {
         console.log(response)
-        fetch('/register')
-        .then(function(response){
-          return response.json();
-        })
-        .then(function(json) {
-          var data = json
-        })
+        profData = true; 
       }
     })
   }

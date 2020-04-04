@@ -24,6 +24,12 @@ def registration():
     session['user_id'] = new_user.id
     return redirect("/")
 
+@app.route("/handle_json", methods=["POST"])
+def handler():
+    data = request.get_json()
+    print(data)
+    return redirect('/user')
+
 #User Profile Page
 @app.route("/user/<userID>")
 def user(userID):
