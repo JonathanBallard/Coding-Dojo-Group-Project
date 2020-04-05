@@ -16,6 +16,7 @@ class Users(db.Model):
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255))
+    about = db.Column(db.String(255)) #added for 'About Me' section
     passwordHash = db.Column(db.String(255))    #only for non-facebook users
     creator_name = db.Column(db.String(255))
     # oauth_link = db.Column(db.String(255))    #link to OAuth UserID
