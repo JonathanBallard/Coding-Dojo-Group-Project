@@ -1,4 +1,5 @@
 
+from flask import flash
 from sqlalchemy.sql import func
 from config import db, bcrypt
 from sqlalchemy import text
