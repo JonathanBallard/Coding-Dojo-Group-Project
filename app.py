@@ -186,7 +186,7 @@ def deleteUser(userID):
         return redirect("/")
 
 # LOGOUT
-@app.route('/destroy', methods=['POST','GET'])
+@app.route('/logout', methods=['POST','GET'])
 def logout():
     session.clear()
     return redirect('/')
