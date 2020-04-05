@@ -1,6 +1,6 @@
 
 from sqlalchemy.sql import func
-from config import db
+from config import db, bcrypt
 from sqlalchemy import text
 from flask_migrate import Migrate
 
@@ -35,8 +35,8 @@ class Users(db.Model):
 
     @classmethod
     def add_new_user(cls, form_data):
-        hashed_password = bcrypt.generate_password_hash(user_data['password'])
-        new_user = cls(first_name=user_data['first_name'], last_name=user_data['last_name'], email=user_data['email'], passwordHash=hashed_password)
+        hashed_password = bcrypt.generate_password_hash(form_data['password'])
+        new_user = cls(first_name=form_data['first_name'], last_name=form_data['last_name'], email=form_data['email'], passwordHash=hashed_password)
         db.session.add(new_user)
         print("adding new user...")
         print(new_user)

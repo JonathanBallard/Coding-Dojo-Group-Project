@@ -41,7 +41,6 @@
 
 #### Remaining Requirements for MVP
 
-- Connect OAuth to Database __Tanner__
 - Wireframe the Pages (login/registration, portal, videos, stream, stats) (Med/Short) __Tanner__ **DONE**
 - User Page & Route (/user page) (Short) where users can put a description of themselves and a picture __Sol__
 - User Page & Route (/stream page) (Short) show current viewer number, with a static video for the moment __Sol__
@@ -52,11 +51,11 @@
 
 #### These Features Only Added After Everything Else Done
 
-- Video Functions for user /videos Pages, should just be embedding (Short) __Tanner__
+- Video Functions for user /videos Pages, should just be embedding (Short) __Tanner__ **SKIPPED**
 - /create page where User puts their video, title, description, etc.. (Med) __Jonathan__ **DONE**
 - Page Design/Colors/Beautify (Med) __Jonathan__
-- User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__
-- Login/Register takes you to your own User page __Sol__
+- User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__ **SKIPPED**
+- Login/Register takes you to your own User page __Sol__ **DONE**
 - Make sure only Admin accounts access admin page/edituser page __Jonathan__ **DONE**
 
 #### Lastly - Testing
@@ -78,5 +77,3 @@
 - /display page (off of home page, displays all currently active creator pages for people to scroll through with most active at top)
 - Streaming Functions for user /stream Pages
 - Mobile Friendly
-
-
