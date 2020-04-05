@@ -12,7 +12,6 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
 
 
@@ -43,8 +42,44 @@
                 <h4 class="display-5 logoutLink"><a href="/destroy">Logout</a></h4>
             </div>
         </div>
+        
+        <div class="container">
+            <div class="row">
+              <!-- Bootstrap left nav link group - added Stream, Data, and two blank link options if we want to expand -->
+              <div class="col">
+                <h1>Links</h1>
+                <div class="list-group">
+                    <a href="/stream" class="list-group-item list-group-item-action active">
+                      Stream
+                    </a>
+                    <a href="/stats" class="list-group-item list-group-item-action">Data</a>
+                    <a href="#" class="list-group-item list-group-item-action">(Page 3)</a>
+                    <a href="#" class="list-group-item list-group-item-action">(Page 4)</a>
+                </div>
+              </div>
+              <!-- User image column -->
+              <div class="col">
+                (Not sure what we want to surface here re: image)
+              </div>
+              <!-- About me column-->
+              <div class="col">
+                {% for thisUser in session %}
+                    {{ about }}
+                {% endfor %}
+                <form>
+                    <div class="form-group">
+                      <label for="about">Let people know about you.</label>
+                      <textarea class="form-control" id="about" rows="5"></textarea>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
 
 
+
+        </div>
 
 
 
