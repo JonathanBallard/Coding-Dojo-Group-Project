@@ -42,7 +42,7 @@
 #### Remaining Requirements for MVP
 
 - Wireframe the Pages (login/registration, portal, videos, stream, stats) (Med/Short) __Tanner__ **DONE**
-- Scaledrone chat test for functionality __Sol__ (channel id=1OQmPTywz3pT6ksB  key=DssyXuSjlmUTfXvhuCEfqRYgBk0nbCV3)
+- Scaledrone chat test for functionality __Sol__ (channel id=1OQmPTywz3pT6ksB  key=DssyXuSjlmUTfXvhuCEfqRYgBk0nbCV3) **DONE**
 - User Page & Route (/user page) (Short) where users can put a description of themselves and a picture __Sol__ **DONE**
 - User Page & Route (/stream page) (Short) show current viewer number, with a static video for the moment __Sol__ **DONE**
 - User Page & Route (/stats page) (Med/Short) list of all user's videos where user can view their earnings per video, total earnings, earnings from stream __Jonathan__ **DONE**
@@ -54,12 +54,12 @@
 
 - Video Functions for user /videos Pages, should just be embedding (Short) __Tanner__ **SKIPPED**
 - /create page where User puts their video, title, description, etc.. (Med) __Jonathan__ **DONE**
-- Page Design/Colors/Beautify (Med) __Jonathan__
+- Page Design/Colors/Beautify (Med) __Jonathan__ **DONE**
 - User Page & Route (/videos page) (Med/Short) show total views, with static videos for the moment __Tanner__ **SKIPPED**
 - Login/Register takes you to your own User page __Sol__ **DONE**
 - Make sure only Admin accounts access admin page/edituser page __Jonathan__ **DONE**
 
-#### Lastly - Testing
+#### Lastly - Testing __Jonathan__ **DONE**
 
 - Test Login/Registration, ensure flask messages popup when login/registration fails
 - Test /user page
