@@ -9,6 +9,13 @@
     vertical-align: baseline;
 }
 
+
+
+.profilePic {
+  max-width: 80%;
+  height: auto;
+}
+
 .wrapper {
     background-color: #470642;
 }

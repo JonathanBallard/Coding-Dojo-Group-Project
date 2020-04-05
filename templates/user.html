@@ -42,9 +42,9 @@
                 <h4 class="display-5 logoutLink"><a href="/destroy">Logout</a></h4>
             </div>
         </div>
-
+        {% if userOwner %}
         <h1 class="display1 text-light">Welcome to {{ userOwner.first_name + ' ' + userOwner.last_name }}'s Profile</h1>
-        
+        {% endif %}
         <div class="container">
             <div class="row">
               <!-- Bootstrap left nav link group - added Stream, Data, and two blank link options if we want to expand -->
@@ -62,8 +62,8 @@
                 </div>
               </div>
               <!-- User image column -->
-              <div class="col">
-                <img src="../static/img/{{ userOwner.user_image }}" alt="My Pic">
+              <div class="col userImg">
+                <img class="profilePic" src="../static/img/{{ userOwner.user_image }}" alt="My Pic">
               </div>
               <!-- About me column-->
               <div class="col">
