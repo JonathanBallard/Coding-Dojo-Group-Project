@@ -49,12 +49,19 @@ def login(userID):
 def user(userID):
     if 'user_id' in session:
         thisUser = Users.query.get(session['user_id']) 
-        return render_template("user.html", thisUser = thisUser)
+        userOwner = Users.query.get(userID)
+        return render_template("user.html", thisUser = thisUser, userOwner = userOwner)
     else:
         return redirect('/')
 
+
 #Stream Page
-# BLAH
+@app.route("/stream/<userID>")
+def stream(userID):
+    thisUser = Users.query.get(session['user_id'])
+    streamOwner = Users.query.get(userID)
+    return render_template('stream.html', streamOwner = streamOwner, thisUser = thisUser)
+
 
 
 #Stats Page
@@ -98,6 +105,10 @@ def adminPage():
     db.session.add(testUser)
     db.session.commit()
     allUsers = Users.query.all()
+
+    # adminUser = Users.query.get(7)
+    # adminUser.admin = True
+    # db.session.commit()
     
     # Check if User is Admin, if so allow them access
     if "user_id" in session:
@@ -173,5 +184,8 @@ def deleteUser(userID):
     else:
         return redirect("/")
 
+# if __name__ == "__main__":
+#     app.run(debug=True, ssl_context='adhoc')
+
 if __name__ == "__main__":
-    app.run(debug=True, ssl_context='adhoc')
+    app.run(debug=True)

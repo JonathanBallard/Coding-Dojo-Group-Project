@@ -19,15 +19,14 @@ class Users(db.Model):
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255))
-    about = db.Column(db.String(255)) #added for 'About Me' section
     passwordHash = db.Column(db.String(255))    #only for non-facebook users
     creator_name = db.Column(db.String(255))
     # oauth_link = db.Column(db.String(255))    #link to OAuth UserID
     earnings_tips = db.Column(db.Float, default = 0.00)
     earnings_donations = db.Column(db.Float, default = 0.00)
     earnings_watcher_seconds = db.Column(db.Float, default = 0.00)
-    description = db.Column(db.Text)
-    user_image = db.Column(db.String(255))  #retrieve from OAuth Facebook Picture, default will be path to default avatar
+    description = db.Column(db.Text, default = "About Me...")
+    user_image = db.Column(db.String(255), default = "blank_profile.png")  #retrieve from OAuth Facebook Picture, default will be path to default avatar
     stream = db.relationship("Streams", uselist = False, backref = "creator")
     videos = db.relationship("Videos", backref = "creator")
     fb_user_id = db.relationship("FBUsers", uselist = False, backref = "user")

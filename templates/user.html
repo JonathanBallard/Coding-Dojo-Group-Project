@@ -42,37 +42,32 @@
                 <h4 class="display-5 logoutLink"><a href="/destroy">Logout</a></h4>
             </div>
         </div>
+
+        <h1 class="display1 text-light">Welcome to {{ userOwner.first_name + ' ' + userOwner.last_name }}'s Profile</h1>
         
         <div class="container">
             <div class="row">
               <!-- Bootstrap left nav link group - added Stream, Data, and two blank link options if we want to expand -->
               <div class="col">
-                <h1>Links</h1>
+                <h1 class="text-light">Links</h1>
                 <div class="list-group">
-                    <a href="/stream" class="list-group-item list-group-item-action active">
-                      Stream
-                    </a>
-                    <a href="/stats" class="list-group-item list-group-item-action">Data</a>
-                    <a href="#" class="list-group-item list-group-item-action">(Page 3)</a>
-                    <a href="#" class="list-group-item list-group-item-action">(Page 4)</a>
+                    <a href="/stream/{{ userOwner.id }}" class="list-group-item list-group-item-action">Stream</a>
+                    {% if thisUser.id == userOwner.id %}
+                    <a href="/stats" class="list-group-item list-group-item-action">Stats</a>
+                    <a href="/create" class="list-group-item list-group-item-action">Create</a>
+                    {% endif %}
+                    {% if thisUser.admin == True %}
+                    <a href="/admin" class="list-group-item list-group-item-action">Admin</a>
+                    {% endif %}
                 </div>
               </div>
               <!-- User image column -->
               <div class="col">
-                (Not sure what we want to surface here re: image)
+                <img src="../static/img/{{ userOwner.user_image }}" alt="My Pic">
               </div>
               <!-- About me column-->
               <div class="col">
-                {% for thisUser in session %}
-                    {{ about }}
-                {% endfor %}
-                <form>
-                    <div class="form-group">
-                      <label for="about">Let people know about you.</label>
-                      <textarea class="form-control" id="about" rows="5"></textarea>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                {{ thisUser.description }}
               </div>
             </div>
           </div>
