@@ -36,17 +36,18 @@ def registration():
 
 #Login 
 @app.route("/login", methods=["POST"])
-def login(userID):
-    user = User.query.filter_by(email=request.form['lemail']).all()
-    is_valid = True if len(user) == 1 and bcrypt.check_password_hash(user[0].password, request.form['lpassword']) else False
+def login():
+    user = Users.query.filter_by(email=request.form['lemail']).all()
+    is_valid = True if len(user) == 1 and bcrypt.check_password_hash(user[0].passwordHash, request.form['lpassword']) else False
     if is_valid:
         session["logged_in"] = True
         session["user_id"] = user[0].id
-        return redirect ('/stream')
+        return redirect ('/user/' + str(session["user_id"]))
+    return redirect('/')
         
 #User Profile Page
 @app.route("/user/<userID>")
-def user(userID):
+def userRoute(userID):
     if 'user_id' in session:
         thisUser = Users.query.get(session['user_id']) 
         userOwner = Users.query.get(userID)
@@ -183,6 +184,12 @@ def deleteUser(userID):
         return redirect("/admin")
     else:
         return redirect("/")
+
+# LOGOUT
+@app.route('/destroy', methods=['POST','GET'])
+def logout():
+    session.clear()
+    return redirect('/')
 
 # if __name__ == "__main__":
 #     app.run(debug=True, ssl_context='adhoc')
