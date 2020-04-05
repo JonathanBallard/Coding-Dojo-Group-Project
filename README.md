@@ -80,3 +80,6 @@
 - Mobile Friendly
 - Implement way to upload pictures
 - Allow users to chat using their own name and not random names
+
+
+

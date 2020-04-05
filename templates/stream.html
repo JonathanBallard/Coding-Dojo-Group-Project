@@ -45,9 +45,9 @@
                 <h4 class="display-5 logoutLink"><a href="/destroy">Logout</a></h4>
             </div>
         </div>
-
+        {% if streamOwner %}
         <h1 class="display1 text-light">Welcome to {{streamOwner.first_name + ' ' + streamOwner.last_name}}'s Stream</h1>
-
+        {% endif %}
         <div class="container col-xl-4 text-light">
             <!-- Chatroom html: we'll need to address as we style this page - SK -->
             <div class="members-count">-</div>
