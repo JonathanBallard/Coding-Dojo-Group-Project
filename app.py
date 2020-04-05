@@ -184,6 +184,12 @@ def deleteUser(userID):
     else:
         return redirect("/")
 
+# LOGOUT
+@app.route('/destroy', methods=['POST','GET'])
+def logout():
+    session.clear()
+    return redirect('/')
+
 # if __name__ == "__main__":
 #     app.run(debug=True, ssl_context='adhoc')
 
