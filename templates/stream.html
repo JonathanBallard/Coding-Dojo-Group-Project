@@ -46,23 +46,28 @@
             </div>
         </div>
 
-        <!-- Chatroom html: we'll need to address as we style this page - SK -->
-        <div class="members-count">-</div>
-        <div class="members-list">-</div>
-        <div class="messages"></div>
-        <form class="message-form" onsubmit="return false;">
-          <input class="message-form__input" placeholder="Type a message.." type="text"/>
-          <input class="message-form__button" value="Send" type="submit"/>
-        </form>
-        <script src="./script.js"></script>
-        <!--end chatroom specific html-->
+        <h1 class="display1 text-light">Welcome to {{streamOwner.first_name + ' ' + streamOwner.last_name}}'s Stream</h1>
 
+        <div class="container col-xl-4 text-light">
+            <!-- Chatroom html: we'll need to address as we style this page - SK -->
+            <div class="members-count">-</div>
+            <div class="members-list">-</div>
+            <div class="messages"></div>
+            <form class="message-form" onsubmit="return false;">
+              <input class="message-form__input" placeholder="Type a message.." type="text"/>
+              <input class="message-form__button" value="Send" type="submit"/>
+            </form>
+            <script src="./script.js"></script>
+            <!--end chatroom specific html-->
+        </div>
+        
         <!-- Stream window -->
 
 
 
-
-
+        <div class="btn btn-lg btn-secondary">
+            <a class="text-light" href="/user/{{ thisUser.id }}">Return to User</a>
+        </div>
 
 
     </div>

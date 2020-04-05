@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -17,7 +16,6 @@
 
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <script defer type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
     <link rel="stylesheet" href="../static/css/style.css"> <!-- for testing purposes while I dont have server running -->
 
     <title>Edit User</title>
@@ -46,59 +44,64 @@
 
 
         <!-- Form to Update User -->
-        <form action="/updateUser/{{ userToEdit.id }}" method="POST">
-            <div class="form-group">
-                <label for="admin">Admin - USE WITH CARE</label>
-                <input type="text" name="admin" value="{{ userToEdit.admin }}">
-            </div>
-            <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" value="{{ userToEdit.first_name }}">
-            </div>
-            <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" value="{{ userToEdit.last_name }}">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" value="{{ userToEdit.email }}">
-            </div>
-            <div class="form-group">
-                <label for="creator_name">Creator Name</label>
-                <input type="text" name="creator_name" value="{{ userToEdit.creator_name }}">
-            </div>
-            <div class="form-group">
-                <label for="earnings_tips">Earnings Tips</label>
-                <input type="number" name="earnings_tips" value="{{ userToEdit.earnings_tips }}">
-            </div>
-            <div class="form-group">
-                <label for="earnings_donations">Earnings Donations</label>
-                <input type="number" name="earnings_donations" value="{{ userToEdit.earnings_donations }}">
-            </div>
-            <div class="form-group">
-                <label for="earnings_watcher_seconds">Earnings Time Based</label>
-                <input type="number" name="earnings_watcher_seconds" value="{{ userToEdit.earnings_watcher_seconds }}">
-            </div>
-            <div class="form-group">
-                <label for="fb_user_id">Facebook User ID</label>
-                <input type="number" name="fb_user_id" value="{{ userToEdit.fb_user_id }}">
-            </div>
-            <input type="submit" value="Submit">
-        
-        </form>
+        <div class="container col-xl-6">
+            <form action="/updateUser/{{ userToEdit.id }}" method="POST">
+                <div class="form-group">
+                    <label class="text-light" for="admin">Admin - USE WITH CARE</label>
+                    <input class="form-control" type="text" name="admin" value="{{ userToEdit.admin }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="first_name">First Name</label>
+                    <input class="form-control" type="text" name="first_name" value="{{ userToEdit.first_name }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="last_name">Last Name</label>
+                    <input class="form-control" type="text" name="last_name" value="{{ userToEdit.last_name }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="email">Email</label>
+                    <input class="form-control" type="email" name="email" value="{{ userToEdit.email }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="creator_name">Creator Name</label>
+                    <input class="form-control" type="text" name="creator_name" value="{{ userToEdit.creator_name }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="earnings_tips">Earnings Tips</label>
+                    <input class="form-control" type="number" name="earnings_tips" value="{{ userToEdit.earnings_tips }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="earnings_donations">Earnings Donations</label>
+                    <input class="form-control" type="number" name="earnings_donations" value="{{ userToEdit.earnings_donations }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="earnings_watcher_seconds">Earnings Time Based</label>
+                    <input class="form-control" type="number" name="earnings_watcher_seconds" value="{{ userToEdit.earnings_watcher_seconds }}">
+                </div>
+                <div class="form-group">
+                    <label class="text-light" for="fb_user_id">Facebook User ID</label>
+                    <input class="form-control" type="number" name="fb_user_id" value="{{ userToEdit.fb_user_id }}">
+                </div>
+                <input class="btn btn-warning btn-lg mb-3" type="submit" value="Edit">
+            
+            </form>
 
+            <div class="btn btn-lg btn-primary">
+                <a class="text-light" href="/admin">Return to Admin</a>
+            </div>
+        </div>
 
 
 
 
         <!-- Delete User -->
         <div class="container">
-            <a href="/deleteUser/{{ userToEdit.id }}" class="btn btn-danger d-block">Delete Me FOREVER</a>
+            <a href="/deleteUser/{{ userToEdit.id }}" class="btn btn-danger d-block m-4">Delete Me FOREVER</a>
         </div>
 
 
 
-
+        
 
 
     </div>
