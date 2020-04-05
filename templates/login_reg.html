@@ -109,11 +109,39 @@
   function statusChangeCallback(response) {
     if (response.status == "connected") {
       console.log("you are logged in")
+
+      var person = { userID: "", name: "", accessToken: "", picture: "", email: ""};
+
+      function logIn() {
+        if (response && !response.error) {
+            console.log(response)
+            person.userID = response.authResponse.userID;
+            person.accessToken = response.authResponse.accessToken;
+            console.log(person)
+
+        FB.api("/me?fields=name,email", function(user){
+            person.name = user.name;
+            person.email = user.email;
+            console.log(person)
+
+            $.ajax({
+              url:"/register",
+              method:"POST",
+              data: person,
+              dataType: 'text',
+              success: function (serverResponse) {
+                if (serverResponse == "success")
+                  window.location = "/stream"
+                  }
+            })
+          })
+        }
+        logIn();
+      }
     }
     else {
       console.log("not authenticated")
     }
-    getAPIData();
   }   
 
   function checkLoginState() {
@@ -122,13 +150,6 @@
   });
 }
 
-  function getAPIData() {
-    FB.api("/me?fields=name,email", function(response){
-      if (response && !response.error) {
-        console.log(response) 
-      }
-    })
-  }
 </script>
 </body>
 </html>
