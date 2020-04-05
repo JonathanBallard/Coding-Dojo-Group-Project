@@ -1,10 +1,13 @@
 
+from flask import flash
 from sqlalchemy.sql import func
 from config import db, bcrypt
 from sqlalchemy import text
 from flask_migrate import Migrate
+import datetime
+import re
 
-
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 # - Users Table:
 #     - OAuth UserID
@@ -16,6 +19,7 @@ class Users(db.Model):
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     email = db.Column(db.String(255))
+    about = db.Column(db.String(255)) #added for 'About Me' section
     passwordHash = db.Column(db.String(255))    #only for non-facebook users
     creator_name = db.Column(db.String(255))
     # oauth_link = db.Column(db.String(255))    #link to OAuth UserID
@@ -34,14 +38,34 @@ class Users(db.Model):
         return "UserID: " + str(self.id) + " Name: " + self.first_name + " " + self.last_name
 
     @classmethod
-    def add_new_user(cls, form_data):
-        hashed_password = bcrypt.generate_password_hash(form_data['password'])
-        new_user = cls(first_name=form_data['first_name'], last_name=form_data['last_name'], email=form_data['email'], passwordHash=hashed_password)
+    def add_new_user(cls, user_data):
+        hashed_password = bcrypt.generate_password_hash(user_data['password'])
+        new_user = cls(first_name=user_data['first_name'], last_name=user_data['last_name'], email=user_data['email'], passwordHash=hashed_password)
         db.session.add(new_user)
         print("adding new user...")
         print(new_user)
         db.session.commit()
         return new_user
+    
+    @classmethod
+    def validate_user(cls, user_data):
+        is_valid = True
+        if len(user_data["first_name"]) < 1:
+            is_valid = False
+            flash("Please provide a first name", "reg_error")
+        if len(user_data["last_name"]) < 1:
+            is_valid = False
+            flash("Please provide a last name", "reg_error")
+        if not EMAIL_REGEX.match(user_data["email"]):
+            is_valid = False
+            flash("Please provide a valid email", "reg_error" )
+        if len(user_data["password"]) < 8:
+            is_valid = False
+            flash("Password should be at least 8 characters", "reg_error")
+        if user_data["password"] != user_data["cpassword"]:
+            is_valid = False
+            flash("Passwords do not match", "reg_error")
+        return is_valid
 
 class FBUsers(db.Model):
     __tablename__ = "FBUsers"
