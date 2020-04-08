@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container-fluid">
-  <nav class="navbar navbar-expand-sm navbar-light mb-3" id="top-nav">
+  <nav class="navbar navbar-expand-sm navbar-light mb-3 topbar">
     <div class="container">
       <div class="logo">
         <a class="navbar-brand" href="#">Speakeasy</a>
@@ -33,7 +33,7 @@
                   {% endif %}
               {% endwith %}
     </div>
-</nav>
+  </nav>
   <div class="row">
     <div class="col">
       <div class="container w-25">
@@ -64,10 +64,8 @@
             <div class="d-flex text-center justify-content-center mt-4 mb-5">
               <button type="submit" class="btn btn-dark text-white">Sign Up!</button>
             </div>
-            <div class="text-center d-flex justify-content-center">
-              <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
-            </div>
-            {% with messages = get_flashed_messages(with_categories=True) %}
+            <div>
+              {% with messages = get_flashed_messages(with_categories=True) %}
                   {% if messages %}
                       {% for message in messages %}
                         {% if message[0] == "reg_error" %}
@@ -76,6 +74,10 @@
                       {% endfor %}
                   {% endif %}
               {% endwith %}
+            </div>
+            <div class="text-center d-flex justify-content-center">
+              <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
+            </div>
           </div>
         </form>
       </div>
@@ -85,7 +87,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+
+  // email check 
+
+   $(document).ready(function(){
+    $('#email').keyup(function(){
+        var data = $("#email").serialize()   // capture all the data in the form in the variable data
+        $.ajax({
+            method: "POST",   // we are using a post request here, but this could also be done with a get
+            url: "/email",
+            data: data
+        })
+        .done(function(res){
+             $('#usernameMsg').html(res)  // manipulate the dom when the response comes back
+        })
+    })
+})
+
+ // fb api code
+
    window.fbAsyncInit = function() {
     FB.init({
       appId      : '631307220747284',

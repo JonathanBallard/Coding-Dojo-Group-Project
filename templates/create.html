@@ -29,24 +29,24 @@
         <div class="topbar d-flex flex-lg-row">
 
             <!-- Logo -->
-            <div class="logobox col-md-3 d-inline-flex align-items-stretch">
-                <h1 class="display-1">Speakeasy</h1>
+            <div class="logobox col-md-3 d-inline-flex align-items-center">
+                <h1 class="display-5">Speakeasy</h1>
             </div>
 
             <!-- Welcome User Bar -->
-            <div class="welcomebox col-md-7 d-inline-flex align-items-stretch">
-                <h2 class="display-4">Welcome {{ thisUser.first_name + ' ' + thisUser.last_name }}</h2>
+            <div class="welcomebox col-md-7 d-inline-flex align-items-center">
+                <h2 class="display-5">Add your stream link</h2>
             </div>
 
             <!-- Logout Link -->
-            <div class="logoutbox col-md-1 d-inline-flex align-items-stretch">
+            <div class="logoutbox col-md-1 d-inline-flex align-items-center">
                 <h4 class="display-5 logoutLink"><a href="/logout">Logout</a></h4>
             </div>
         </div>
 
 
         <!-- Form to Update User -->
-        <div class="container col-xl-6">
+        <div class="container col-xl-6 mt-4 bt-5">
             <form action="/createVideo/{{ thisUser.id }}" method="POST">
                 <div class="form-group">
                     <label class="text-light" for="title">Title</label>
@@ -63,7 +63,7 @@
                 <input class="btn btn-lg btn-primary mb-4" type="submit" value="Submit">
             </form>
 
-            <div class="btn btn-lg btn-secondary">
+            <div class="btn btn-lg btn-secondary mt-4 mb-4">
                 <a class="text-light" href="/user/{{ thisUser.id }}">Return to User</a>
             </div>
         </div>

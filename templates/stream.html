@@ -31,39 +31,43 @@
         <div class="topbar d-flex flex-lg-row">
 
             <!-- Logo -->
-            <div class="logobox col-md-3 d-inline-flex align-items-stretch">
-                <h1 class="display-1">Speakeasy</h1>
+            <div class="logobox col-md-3 d-inline-flex align-items-center">
+                <h1 class="text-center">Speakeasy</h1>
             </div>
 
             <!-- Welcome User Bar -->
-            <div class="welcomebox col-md-7 d-inline-flex align-items-stretch">
-                <h2 class="display-4">Welcome {{ thisUser.first_name + ' ' + thisUser.last_name }}</h2>
+            <div class="welcomebox col-md-7 d-inline-flex align-items-center">
+                <h2 class="display-5">Welcome {{ thisUser.first_name + ' ' + thisUser.last_name }}</h2>
             </div>
 
             <!-- Logout Link -->
-            <div class="logoutbox col-md-1 d-inline-flex align-items-stretch">
+            <div class="logoutbox col-md-1 d-inline-flex align-items-center">
                 <h4 class="display-5 logoutLink"><a href="/logout">Logout</a></h4>
             </div>
         </div>
         {% if streamOwner %}
-        <h1 class="display1 text-light">Welcome to {{streamOwner.first_name + ' ' + streamOwner.last_name}}'s Stream</h1>
+        <h1 class="display-5 text-light text-center">Welcome to {{streamOwner.first_name + ' ' + streamOwner.last_name}}'s Stream</h1>
         {% endif %}
-        <div class="container col-xl-4 text-light">
-            <!-- Chatroom html: we'll need to address as we style this page - SK -->
-            <div class="members-count">-</div>
-            <div class="members-list">-</div>
-            <div class="messages"></div>
-            <form class="message-form" onsubmit="return false;">
-              <input class="message-form__input" placeholder="Type a message.." type="text"/>
-              <input class="message-form__button" value="Send" type="submit"/>
-            </form>
-            <script src="./script.js"></script>
-            <!--end chatroom specific html-->
+        <div class="row">
+            <!-- Stream window -->
+            <div class="col-lg-6 d-inline-flex">
+                <iframe width="874" height="656" src="https://www.youtube.com/embed/nopyqO1kq84" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-lg-6 text-light">
+                <!-- Chatroom html: we'll need to address as we style this page - SK -->
+                <div class="members-count">-</div>
+                <div class="members-list">-</div>
+                <div class="messages"></div>
+                <form class="message-form" onsubmit="return false;">
+                  <input class="message-form__input" placeholder="Type a message.." type="text"/>
+                  <input class="message-form__button" value="Send" type="submit"/>
+                </form>
+                <script src="./script.js"></script>
+                <!--end chatroom specific html-->
+            </div>
+        </div>
         </div>
         
-        <!-- Stream window -->
-
-
 
         <div class="btn btn-lg btn-secondary">
             <a class="text-light" href="/user/{{ thisUser.id }}">Return to User</a>
