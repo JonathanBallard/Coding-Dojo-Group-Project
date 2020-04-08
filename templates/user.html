@@ -22,34 +22,34 @@
     <title>User Profile</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container-fluid">
 
         <!-- Logo, Welcome Username, Logout -->
         <div class="topbar d-flex flex-lg-row">
 
             <!-- Logo -->
-            <div class="logobox col-md-3 d-inline-flex align-items-stretch">
-                <h1 class="display-1">Speakeasy</h1>
+            <div class="logobox col-md-3 d-inline-flex align-items-center">
+                <h1 class="text-center">Speakeasy</h1>
             </div>
 
             <!-- Welcome User Bar -->
-            <div class="welcomebox col-md-7 d-inline-flex align-items-stretch">
-                <h2 class="display-4">Welcome {{ thisUser.first_name + ' ' + thisUser.last_name }}</h2>
+            <div class="welcomebox col-md-7 d-flex align-items-center">
+                <h2 class="display-5">Welcome, {{ thisUser.first_name }}</h2>
             </div>
 
             <!-- Logout Link -->
-            <div class="logoutbox col-md-1 d-inline-flex align-items-stretch">
+            <div class="logoutbox col-md-1 d-inline-flex align-items-center">
                 <h4 class="display-5 logoutLink"><a href="/logout">Logout</a></h4>
             </div>
         </div>
         {% if userOwner %}
-        <h1 class="display1 text-light">Welcome to {{ userOwner.first_name + ' ' + userOwner.last_name }}'s Profile</h1>
+        <h1 class="text-center mt-2">Edit Your Profile</h1>
         {% endif %}
         <div class="container">
             <div class="row">
               <!-- Bootstrap left nav link group - added Stream, Data, and two blank link options if we want to expand -->
-              <div class="col">
-                <h1 class="text-light">Links</h1>
+              <div class="col-lg-6">
+                <h4 class="text-black text-center">Stream Navigation</h4>
                 <div class="list-group">
                     <a href="/stream/{{ userOwner.id }}" class="list-group-item list-group-item-action">Stream</a>
                     {% if thisUser.id == userOwner.id %}
@@ -62,12 +62,8 @@
                 </div>
               </div>
               <!-- User image column -->
-              <div class="col userImg">
+              <div class="col-lg-6">
                 <img class="profilePic" src="../static/img/{{ userOwner.user_image }}" alt="My Pic">
-              </div>
-              <!-- About me column-->
-              <div class="col">
-                {{ thisUser.description }}
               </div>
             </div>
           </div>

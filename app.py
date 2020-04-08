@@ -13,20 +13,32 @@ def index():
     return render_template("login_reg.html")
     
 #Registration
-@app.route("/register", methods=["POST", "GET"])
+@app.route("/register", methods=["POST"])
 def registration():
-    # if request.method == 'POST':
-    #     print(request.get_json())
-    #     fbData = request.get_json()
     validation_check = Users.validate_user(request.form)
+    found = False
+    found_user = Users.query.filter_by(email=request.form['email']).all()
+    if found_user:
+        found = True
+        flash("That email already exists in the database", "reg_error")
+        return redirect('/')
     if not validation_check:
         print("something went wrong")
         return redirect('/')
     new_user = Users.add_new_user(request.form)
     print(new_user)
     session['logged_in'] = True
-    session['user_id'] = new_user.id
-    return redirect(f"/user/{new_user.id}")
+    session['user_id'] = user[0].id
+    return redirect('/user/' + str(session["user_id"]))
+
+#Email Check
+@app.route('/email', methods=["POST"])
+def username():
+    found = False
+    found_user = Users.query.filter_by(email=request.form['email']).all()
+    if found_user:
+        found = True
+    return render_template('/partials/username.html', found=found)
 
 # @app.route("/handle_json", methods=["POST"])
 # def handler():
@@ -43,7 +55,9 @@ def login():
         session["logged_in"] = True
         session["user_id"] = user[0].id
         return redirect ('/user/' + str(session["user_id"]))
-    return redirect('/')
+    else: 
+        flash("Invalid Login Credentials", "log_error")
+        return redirect('/')
         
 #User Profile Page
 @app.route("/user/<userID>")

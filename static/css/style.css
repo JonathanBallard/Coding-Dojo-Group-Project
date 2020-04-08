@@ -11,18 +11,18 @@
 
 
 
-.profilePic {
-  max-width: 80%;
-  height: auto;
-}
-
 .wrapper {
-    background-color: #470642;
+  background-color: rgb(34, 31, 31);
+}
+.profilePic {
+  height: 50%;
+  max-height: 50%;
 }
 
 .topbar {
     background-color: gold;
     color: black;
+    height: 4rem;
 }
 
 .logobox {
@@ -36,11 +36,6 @@
     vertical-align: top;
 }
 
-#top-nav {
-    background-color: rgb(235, 133, 16);
-    height: 5rem;
-}
-
 
 /* Chatroom styling: */
 body {
@@ -49,8 +44,9 @@ body {
     padding: 13px;
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
+    max-height: 7rem;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
   }
 
   .members-count,
