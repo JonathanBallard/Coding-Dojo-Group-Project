@@ -70,7 +70,7 @@
 - Test /editUser page
 - Test /create page
 - Test chat functions
-- Test OAuth functions
+- Test OAuth functions **NOT NOW**
 - Test Database
 
 ## Features: Backlog
