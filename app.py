@@ -28,7 +28,7 @@ def registration():
     new_user = Users.add_new_user(request.form)
     print(new_user)
     session['logged_in'] = True
-    session['user_id'] = user[0].id
+    session['user_id'] = new_user.id
     return redirect('/user/' + str(session["user_id"]))
 
 #Email Check
